@@ -13,6 +13,19 @@ let Number y = 5 # Declare and initialize
 let z = 5 # Declare and initialize with automatic type inference
 ```
 
+### Deconstruction
+Aardvark supports both Array and Object deconstruction.
+```adk
+let [x, y, z] = [1, 2, 3]
+stdout.write(x, y, z, "\n") # 1 2 3
+
+let {a, b, c} = {a: 1, b: 2, c: 3}
+stdout.write(a, b, c, "\n") # 1 2 3
+
+let {a: p, b: q, c: r} = {a: 1, b: 2, c: 3}
+stdout.write(p, q, r, "\n") # 1 2 3
+```
+
 
 ## Comments
 Single line comments in Aardvark start with `#` and end at the end of the line. Multiline comments (doc comments) begin with `#*` and end with `*#`.
@@ -43,13 +56,28 @@ let name = stdin.prompt("What is your name? ")
 stdout.write($"Hello, {name}!")
 ```
 
-### Escape Sequences
-TODO
+### ‼️⚠️ Escape Sequences - UNDESIGNED!!!
 
-## Control
-Basic control in Aardvark include `if`, `while`, `for`, `switch`, ``
+## Control Flow
+Basic control flow in Aardvark include `if`, `while`, `for`, and `match`.
 
-## Include
+### `if`
+Conditionals such as `if` are an essential to any programming language and facilitate the most basic control flow. If statements work both inline and as a block.
+```adk
+
+```
+##### TODO: finish these specs
+
+### `while`
+
+### `for`
+
+### `match`
+
+
+### Block Merging
+
+## Modules and Packages
 ```adk
 include x, y
 include y, z from x
