@@ -10,7 +10,7 @@ x = 5 # Initialize
 
 let Number y = 5 # Declare and initialize
 
-let z = 5 # Declare and initialize with automatic type inference
+let z = 5 # Declare and initialize with automatic typing
 ```
 
 ### Deconstruction
@@ -76,17 +76,69 @@ Conditionals such as `if` are an essential to any programming language and facil
 
 
 ### Block Merging
+TODO
+
 
 ## Modules and Packages
 ```adk
 include x, y
+include "./x", "./y"
 include y, z from x
 from x include y, z
 include {a: b, c} from x
+include {a: b, c} from "./x"
 ```
-
+Packages have an entry point file named `main.py`.
 ## Operators
-TODO
+
+### Assignment
+#### `=`
+#### `+=`
+#### `-=`
+#### `*=`
+#### `/=`
+#### `^=`
+#### `%=`
+#### `?=`
+#### `++`
+#### `--`
+
+
+### Comparison
+#### `<`
+#### `>`
+#### `<=`
+#### `>=`
+#### `==`
+#### `!=`
+#### `~=`
+#### `@=`
+#### `$=`
+`$=` is a special operator for structural pattern matching. This lets you do the same thing as is done in a `case` statement.
+
+### Arithmetic
+#### `+`
+#### `-`
+#### `*`
+#### `/`
+#### `%`
+#### `^`
+#### `~`
+
+
+### Logical
+#### `&`/`and`
+#### `|`/`or`
+#### `!`/`not`
+#### `x|`/`xor`
+
+
+### Other
+#### `?`
+Catches all errors about the left operand not existing or being null. If the left operand is `null` or undefined, it returns the right operand or `null`, if the right operand does not exist.
+#### `@`
+Makes a reference to its right operand.
+
 
 ## Functions
 TODO
@@ -95,10 +147,14 @@ TODO
 TODO
 
 ## Classes / Types
-TODO
+Classes work similar to classes in other OOP languages such as Python.
+They are created with the `class` keyword.
 
 ## Arrays
 TODO
 
 ## Objects
+TODO
+
+## Extending
 TODO
