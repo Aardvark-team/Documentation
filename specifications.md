@@ -178,13 +178,42 @@ Makes a reference to its right operand.
 
 ## Functions
 TODO
-    
+
 ## Typing
 Type goes before value, C-style
 
 ## Classes / Types
 Classes work similar to classes in other OOP languages such as Python.
 They are created with the `class` keyword.
+```adk
+class className as objectName {
+    #* 
+    NOTE: when attributes and methods are used as a class property (i.e. className.attribute), objectName will refer to the class itself, otherwise it refers to an instance of that class 
+    *#
+    let attribute = value # This is an attribute that the class has and that all instances of this class will start with. Static classes require all properties to be defined here.
+    $constructor(...args) {
+        #* 
+        Called like className(...args) 
+        *#
+    }
+    $call(...args) {
+        #* 
+        When an instance of this class is called. 
+        return_value = objectName(...args) 
+        *#
+        return return_value
+    }
+    $delete() {
+        #* 
+        Called when an instance of this class is deleted. 
+        delete objectName 
+        *#
+    }
+    function method() {
+        # This is a method of both the class and instances of the class.
+    }
+}
+```
 
 ## Arrays
 TODO
