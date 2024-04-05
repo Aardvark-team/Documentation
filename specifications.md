@@ -76,7 +76,25 @@ Conditionals such as `if` are an essential to any programming language and facil
 
 
 ### Block Merging
-TODO
+You can merge multiple blocks.
+```adk
+if condition
+if other condition
+if yet another condition {
+    # You should just use &
+}
+
+for b in a
+for c in b
+for d in c {
+    # This can actually be useful sometimes
+}
+function x() while true {
+
+}
+# etc... You get the idea
+```
+This is how `else if` works. The else is a block that is merged with another if.
 
 
 ## Modules and Packages
@@ -93,6 +111,7 @@ Packages have an entry point file named `main.py`.
 
 ### Assignment
 #### `=`
+Assign
 #### `+=`
 #### `-=`
 #### `*=`
@@ -106,24 +125,41 @@ Packages have an entry point file named `main.py`.
 
 ### Comparison
 #### `<`
+Less than
 #### `>`
+More than
 #### `<=`
+Less than or equal to
 #### `>=`
+More than or equal to
 #### `==`
+Equal to
 #### `!=`
+Not equal to
 #### `~=`
+About equal to (round for Numbers, case-insensitive for Strings)
 #### `@=`
+Reference to
+#### `in`
+In
 #### `$=`
 `$=` is a special operator for structural pattern matching. This lets you do the same thing as is done in a `case` statement.
 
 ### Arithmetic
 #### `+`
+Addition
 #### `-`
+Subtraction
 #### `*`
+Multiplication
 #### `/`
+Division
 #### `%`
+Modulo
 #### `^`
+Exponentiation
 #### `~`
+Rounding???? Do we need this?
 
 
 ### Logical
@@ -142,9 +178,9 @@ Makes a reference to its right operand.
 
 ## Functions
 TODO
-
+    
 ## Typing
-TODO
+Type goes before value, C-style
 
 ## Classes / Types
 Classes work similar to classes in other OOP languages such as Python.
@@ -154,7 +190,15 @@ They are created with the `class` keyword.
 TODO
 
 ## Objects
-TODO
+Like JavaScript.
 
 ## Extending
-TODO
+Extending is a way to take an existing Class, Array, Set, Object, and add on to it. Let's see an example.
+```
+let counting = [1, 2, 3, 4]
+extending counting [
+  5, 6, 7, 8, 9, 10
+]
+stdout.write(counting) # [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+```
+Extending can also be used for function and operator overloading.
