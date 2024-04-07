@@ -177,7 +177,7 @@ Makes a reference to its right operand.
 
 
 ## Functions
-TODO
+Static functions are functions that have no side-effect and will produce the same outputs for the same inputs no matter what.
 
 ## Typing
 Type goes before value, C-style
@@ -216,10 +216,33 @@ class className as objectName {
 ```
 
 ## Arrays
-TODO
+[1, 2, 3, 4]
 
 ## Objects
-Like JavaScript.
+Kind of like JavaScript.
+```adk
+let x = 5
+let my_object = {
+    a: 1,
+    b: 2,
+    c: 3
+}
+{
+    attribute: "value",
+    ...my_object,
+    x
+}
+stdout.write(my_object, "\n")
+#*
+{
+    attribute: "value",
+    a: 1,
+    b: 2,
+    c: 3,
+    x: 5
+}
+*#
+```
 
 ## Extending
 Extending is a way to take an existing Class, Array, Set, Object, and add on to it. Let's see an example.
