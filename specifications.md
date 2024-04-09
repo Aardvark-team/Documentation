@@ -106,7 +106,7 @@ from x include y, z
 include {a: b, c} from x
 include {a: b, c} from "./x"
 ```
-Packages have an entry point file named `main.py`.
+Packages have an entry point file named `main.adk`.
 ## Operators
 
 ### Assignment
@@ -178,9 +178,44 @@ Makes a reference to its right operand.
 
 ## Functions
 Static functions are functions that have no side-effect and will produce the same outputs for the same inputs no matter what.
+How to define a function:
+```adk
+function my_function(argument1, argument2) {
+    # Do something
+}
+```
+Deconstruction and property assignment also work in function definitions.
+```adk
+function my_function({a, b, c: d, e: {f: g}}, [h, i]) {
+    # The arguments were deconstructed
+}
+class X as this {
+    let a = 1
+    let b = 2
+    let c = 3
+    $constructor(this.a, this.b, this.c) {
+        # this.a, this.b, and this.c are now set.
+    }
+}
+```
 
 ## Typing
-Type goes before value, C-style
+Type goes before value, C-style. Type annotations are optional.
+```adk
+let Number x = 5
+let String y = "hello"
+let [...Number] z = [1, 2, 3]
+let [String, ...Number] z = ["hello", 1, 2, 3]
+let [...Number, String] z = [1, 2, 3, "hello"]
+```
+Object types:
+```adk
+let a = {
+    Number a: 1.
+    Number b: 2.
+    String c: "hello"
+}
+```
 
 ## Classes / Types
 Classes work similar to classes in other OOP languages such as Python.
@@ -217,6 +252,17 @@ class className as objectName {
 
 ## Arrays
 [1, 2, 3, 4]
+#### array.add(item)
+#### array.remove(item)
+#### array.contains(item)
+#### array.reverse()
+#### array.filter(key)
+#### array.map(key)
+#### array.reduce(key)
+#### array.slice(start, end, step=1)
+#### array.sort(key)
+#### array.length
+
 
 ## Objects
 Kind of like JavaScript.
@@ -253,4 +299,4 @@ extending counting [
 ]
 stdout.write(counting) # [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 ```
-Extending can also be used for function and operator overloading.
+Extending can also be used for class extensions and function and operator overloading.
