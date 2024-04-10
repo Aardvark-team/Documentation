@@ -12,6 +12,7 @@ let Number y = 5 # Declare and initialize
 
 let z = 5 # Declare and initialize with automatic typing
 ```
+Variables can be made static with the `static` keyword.
 
 ### Deconstruction
 Aardvark supports both Array and Object deconstruction.
@@ -198,6 +199,7 @@ class X as this {
     }
 }
 ```
+You can also use `...` in function arguments.
 
 ## Typing
 Type goes before value, C-style. Type annotations are optional.
