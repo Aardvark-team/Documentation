@@ -70,8 +70,28 @@ Conditionals such as `if` are an essential to any programming language and facil
 ##### TODO: finish these specs
 
 ### `while`
-
+Works like pretty much every other language. We do not have `do while` loops however.
+```adk
+while condition {
+    # Do something
+}
+```
 ### `for`
+Works like Python.
+```adk
+for x in [1, 2, 3] {
+    # Do something
+}
+```
+It also supports deconstruction and key:value deconstruction.
+```adk
+for [x, y] in [[1, 2], [3, 4]] {
+    # Do something
+}
+for key:value in {a: 1, b: 2} {
+    # Do something
+}
+```
 
 ### `match`
 
