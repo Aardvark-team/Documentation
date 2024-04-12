@@ -185,6 +185,8 @@ function my_function(argument1, argument2) {
     # Do something
 }
 ```
+
+You can add `?` after a parameter to make it optional.
 Deconstruction and property assignment also work in function definitions.
 ```adk
 function my_function({a, b, c: d, e: {f: g}}, [h, i]) {
@@ -199,7 +201,7 @@ class X as this {
     }
 }
 ```
-You can also use `...` in function arguments.
+You can also use `...` in function parameters like JavaScript.
 
 ## Typing
 Type goes before value, C-style. Type annotations are optional.
@@ -209,8 +211,10 @@ let String y = "hello"
 let [...Number] z = [1, 2, 3]
 let [String, ...Number] z = ["hello", 1, 2, 3]
 let [...Number, String] z = [1, 2, 3, "hello"]
+
+let {Number x, String y} = {a: 1, b: 2}
 ```
-Object types:
+Type annotations in Objects:
 ```adk
 let a = {
     Number a: 1.
