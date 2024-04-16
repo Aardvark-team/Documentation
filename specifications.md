@@ -27,6 +27,20 @@ let {a: p, b: q, c: r} = {a: 1, b: 2, c: 3}
 stdout.write(p, q, r, "\n") # 1 2 3
 ```
 
+### Getters amd Setters
+A getter is a function that is called to get the value of a variable. A setter is a function that is called to set the value of a variable. Here's an example:
+```adk
+get x {
+    return 5
+}
+set x(value) {
+    stdout.write("Tried to set x\n")
+}
+stdout.write(x, "\n") # 5
+x = 6 # Tried to set x
+stdout.write(x, "\n") # 5
+```
+
 
 ## Comments
 Single line comments in Aardvark start with `#` and end at the end of the line. Multiline comments (doc comments) begin with `#*` and end with `*#`.
@@ -326,3 +340,13 @@ extending counting [
 stdout.write(counting) # [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 ```
 Extending can also be used for class extensions and function and operator overloading.
+
+# Macros
+Define a macro with the `macro` keyword. They are essentially just functions that are called in place. Here's an example:
+```adk
+macro define_y(value) {
+    let y = value
+}
+define_y(5) # That code is run in-place in this scope
+stdout.write(y, "\n) # 5
+```
