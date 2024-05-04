@@ -27,20 +27,6 @@ let {a: p, b: q, c: r} = {a: 1, b: 2, c: 3}
 stdout.write(p, q, r, "\n") # 1 2 3
 ```
 
-### Getters amd Setters
-A getter is a function that is called to get the value of a variable. A setter is a function that is called to set the value of a variable. Here's an example:
-```adk
-get x {
-    return 5
-}
-set x(value) {
-    stdout.write("Tried to set x\n")
-}
-stdout.write(x, "\n") # 5
-x = 6 # Tried to set x
-stdout.write(x, "\n") # 5
-```
-
 
 ## Comments
 Single line comments in Aardvark start with `#` and end at the end of the line. Multiline comments (doc comments) begin with `#*` and end with `*#`.
@@ -79,6 +65,14 @@ Basic control flow in Aardvark include `if`, `while`, `for`, and `match`.
 ### `if`
 Conditionals such as `if` are an essential to any programming language and facilitate the most basic control flow. If statements work both inline and as a block.
 ```adk
+if condition {
+    # Do something
+} else if condition {
+    # Do something else
+} else {
+    # Do something else
+}
+let x = y if condition else z
 
 ```
 ##### TODO: finish these specs
@@ -97,7 +91,7 @@ for x in [1, 2, 3] {
     # Do something
 }
 ```
-It also supports deconstruction and key:value deconstruction.
+It also supports deconstruction and `key:value` deconstruction.
 ```adk
 for [x, y] in [[1, 2], [3, 4]] {
     # Do something
@@ -108,7 +102,30 @@ for key:value in {a: 1, b: 2} {
 ```
 
 ### `match`
-
+Match statements are like `if else` chains with an implied `x $=`.
+Here's an example:
+```adk
+match value {
+    case 1 {
+        # This will only match the value 1.
+    }
+    case [1, 2] {
+        # This will only match the value [1, 2].
+    }
+    case [1, 2, ...] {
+        # This will match any array with 1 and 2 as its first two elements.
+    }
+    case {a: 1, b: 2} {
+        # This will only match the value {a: 1, b: 2}.
+    }
+    case {a: 1, b: 2, ...} {
+        # This will match any object with a: 1 and b: 2.
+    }
+    case $x {
+        # This will match any value that is not one of the above.
+    }
+}
+```
 
 ### Block Merging
 You can merge multiple blocks.
@@ -134,12 +151,14 @@ This is how `else if` works. The else is a block that is merged with another if.
 
 ## Modules and Packages
 ```adk
-include x, y
+include x, y as z
 include "./x", "./y"
 include y, z from x
 from x include y, z
 include {a: b, c} from x
 include {a: b, c} from "./x"
+include [x, y, z] from x
+include a as b
 ```
 Packages have an entry point file named `main.adk`.
 ## Operators
@@ -220,7 +239,7 @@ function my_function(argument1, argument2) {
 }
 ```
 
-You can add `?` after a parameter to make it optional.
+You can add `?` after a parameter to make it optional. You can also give it a default value with `=`.
 Deconstruction and property assignment also work in function definitions.
 ```adk
 function my_function({a, b, c: d, e: {f: g}}, [h, i]) {
@@ -235,7 +254,44 @@ class X as this {
     }
 }
 ```
+You can also specify parameter types and function return type:
+```adk
+function my_function(Number x, String y) -> String {
+    # body
+}
 You can also use `...` in function parameters like JavaScript.
+
+### Calling Functions
+It works like Python. You can do keyword arguments.
+```adk
+my_function(x, y, z=5, a="hello")
+```
+### Generator Functions
+Generator functions `yield` values. 
+You can also use generator functions in for loops.
+```adk
+function my_generator() {
+  yield 1
+  yield 2
+  let data = yield 3
+  stdout.log(data);
+}
+let x = my_generator()
+type_of(x) # Generator
+x() # 1
+x() # 2
+x.has_ended # false
+x("my data") # 3
+# my data
+x.has_ended # true
+
+for x in my_generator() {
+  stdout.log(x)
+} # 1, 2, 3
+```
+
+### Static Functions
+Static functions are equivalent to pure functions in other languages. They cannot use any global variables, have side-effects, or interact with the operating system.
 
 ## Typing
 Type goes before value, C-style. Type annotations are optional.
@@ -287,11 +343,24 @@ class className as objectName {
     function method() {
         # This is a method of both the class and instances of the class.
     }
+    $on_get {
+        # This is called when an instance of the class is accessed.
+    }
+    $initializer(value) {
+        # Used when the user does `let className x = value`.
+    }
+    $layout(x) {
+        # See layouts.md
+    }
+    $iterate {
+        # This is a generator function to yield values that can then be used in a loop.
+    }
 }
 ```
 
 ## Arrays
-[1, 2, 3, 4]
+Array definitions are simple. Example: `[1, 2, 3, 4]`.
+Items may be different types. You can also specify types: `[Number 1, String "value", Number 9803]`.
 #### array.add(item)
 #### array.remove(item)
 #### array.contains(item)
