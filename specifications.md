@@ -82,6 +82,8 @@ Works like pretty much every other language. We do not have `do while` loops how
 ```adk
 while condition {
     # Do something
+} else {
+    # Exited naturally
 }
 ```
 ### `for`
@@ -89,6 +91,8 @@ Works like Python.
 ```adk
 for x in [1, 2, 3] {
     # Do something
+} else {
+    # Exited naturally
 }
 ```
 It also supports deconstruction and `key:value` deconstruction.
@@ -126,6 +130,10 @@ match value {
     }
 }
 ```
+### `defer`
+Defer runs the expression at the end of the function.
+
+
 
 ### Block Merging
 You can merge multiple blocks.
@@ -293,6 +301,10 @@ for x in my_generator() {
 ### Static Functions
 Static functions are equivalent to pure functions in other languages. They cannot use any global variables, have side-effects, or interact with the operating system.
 
+### Macros
+Macros are just functions that run in-place as if they are in the current scope.
+
+
 ## Typing
 Type goes before value, C-style. Type annotations are optional.
 ```adk
@@ -355,6 +367,13 @@ class className as objectName {
     $iterate {
         # This is a generator function to yield values that can then be used in a loop.
     }
+}
+```
+
+Classes can be extended off of other classes using `extends`.
+```adk
+class X extends Y {
+    
 }
 ```
 
