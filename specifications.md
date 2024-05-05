@@ -274,6 +274,7 @@ It works like Python. You can do keyword arguments.
 ```adk
 my_function(x, y, z=5, a="hello")
 ```
+
 ### Generator Functions
 Generator functions `yield` values. 
 You can also use generator functions in for loops.
@@ -300,10 +301,6 @@ for x in my_generator() {
 
 ### Static Functions
 Static functions are equivalent to pure functions in other languages. They cannot use any global variables, have side-effects, or interact with the operating system.
-
-### Macros
-Macros are just functions that run in-place as if they are in the current scope.
-
 
 ## Typing
 Type goes before value, C-style. Type annotations are optional.
@@ -379,7 +376,7 @@ class X extends Y {
 
 ## Arrays
 Array definitions are simple. Example: `[1, 2, 3, 4]`.
-Items may be different types. You can also specify types: `[Number 1, String "value", Number 9803]`.
+Items may be different types. You can also specify types: `[1, String "value", Number 9803]`.
 #### array.add(item)
 #### array.remove(item)
 #### array.contains(item)
