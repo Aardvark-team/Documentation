@@ -175,14 +175,23 @@ Packages have an entry point file named `main.adk`.
 #### `=`
 Assign
 #### `+=`
+Assigns to the result of the left side plus the right side.
 #### `-=`
+Assigns to the result of the left side minus the right side.
 #### `*=`
+Assigns to the result of the left side times the right side.
 #### `/=`
+Assigns to the result of the left side divided by the right side.
 #### `^=`
+Assigns to the result of the left side raised to the power of the right side.
 #### `%=`
+Assigns to the result of the left side modulo the right side.
 #### `?=`
+Assigns, but only if the left side is null or undefined.
 #### `++`
+Increment
 #### `--`
+Decrement
 
 
 ### Comparison
@@ -194,17 +203,17 @@ More than
 Less than or equal to
 #### `>=`
 More than or equal to
-#### `==`
+#### `==` (`is` if we go with keyword ops)
 Equal to
-#### `!=`
+#### `!=` (`isnt` if we go with keyword ops)
 Not equal to
-#### `~=`
+#### `~=` (`approximately` if we go with keyword ops)
 About equal to (round for Numbers, case-insensitive for Strings)
-#### `@=`
+#### `@=` (`references` if we go with keyword ops)
 Reference to
 #### `in`
-In
-#### `$=`
+Membership test.
+#### `$=` (`matches` if we go with keyword ops)
 `$=` is a special operator for structural pattern matching. This lets you do the same thing as is done in a `case` statement.
 
 ### Arithmetic
